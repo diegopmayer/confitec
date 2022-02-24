@@ -20,6 +20,7 @@
 * You must create the named profiles with AWS CLI
 * First, create the named profile configure -> [AWS Profile Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-methods)
 * Loading environment variables from named profile -> [Environment variable](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+* After loaded the file will be as public access because the interview reason
 
 
 ## Using
