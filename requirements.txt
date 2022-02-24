@@ -1,0 +1,7 @@
+-e .
+pyspark
+aws-cdk.aws-lambda
+aws-cdk.aws-s3
+boto3
+awswrangler
+pandas
