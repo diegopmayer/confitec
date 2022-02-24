@@ -1,4 +1,3 @@
-from socket import timeout
 from aws_cdk import core as cdk
 from aws_cdk import aws_lambda as _lambda
 
@@ -12,9 +11,15 @@ class ConfitecStack(cdk.Stack):
         fn = _lambda.Function(
             scope=self,
             id="LambdaConfitecETL",
-            runtime=_lambda.Runtime.PYTHON_3_8,
-            timeout=cdk.Duration.seconds(amount=30),
+            runtime=_lambda.Runtime.PYTHON_3_9,
             handler="lambda_handler.handler",
-            code=_lambda.Code.from_asset("confitec/code")
+            code=_lambda.Code.from_asset(path.join(__dirname, "confitec/code"),
+                bundling=BundlingOptions(
+                    image=_lambda.Runtime.PYTHON_3_9.bundling_image,
+                    command=["bash", "-c", "pip install -r requirements.txt -t /asset-output && cp -au . /asset-output"
+                    ]
+                )
+            ),
+            timeout=cdk.Duration.minutes(amount=5)
         )
 
